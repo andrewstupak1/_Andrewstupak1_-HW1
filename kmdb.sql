@@ -144,8 +144,8 @@ name TEXT
 INSERT INTO Studio (name) VALUES ('Warner Bros.');
 
 INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('Batman Begins', '2005', 'PG-13', 1);
-INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('The Dark Knight', '2008', 'PG-13', 1);
-INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('The Dark Knight Rises', '2012', 'PG-13', 1);
+INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('The Dark Knight', '2008', 'PG-13', 2);
+INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('The Dark Knight Rises', '2012', 'PG-13', 3);
 
 INSERT INTO Actor (name) VALUES ('Christian Bale');
 INSERT INTO Actor (name) VALUES ('Michael Caine');
@@ -161,15 +161,22 @@ INSERT INTO Actor (name) VALUES ('Anne Hathaway');
 
 
 INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 1, 'Bruce Wayne');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (2, 1, 'Bruce Wayne');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (3, 1, 'Bruce Wayne');
 INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 2, 'Alfred');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (2, 2, 'Alfred');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (3, 2, 'Alfred');
 INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 3, 'Ra''s Al Ghul');
 INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 4, 'Rachel Dawes');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (2, 4, 'Rachel Dawes');
 INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Commissioner Gordon');
-INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Joker');
-INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Harvey Dent');
-INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Bane');
-INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'John Blake');
-INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Selina Kyle');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (2, 5, 'Commissioner Gordon');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (3, 5, 'Commissioner Gordon');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (2, 6, 'Joker');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (2, 7, 'Harvey Dent');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (3, 8, 'Bane');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (3, 9, 'John Blake');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (3, 10, 'Selina Kyle');
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -179,8 +186,11 @@ INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Selina Kyle');
 -- The SQL statement for the movies output
 -- TODO!
 
-Select title, year, mpaa_rating, studio name
-from 
+SELECT Movies.title, Movies.year_released, Movies.mpaa_rating, Studio.name
+FROM Movies INNER JOIN studio ON studio.id = movies.studio_id
+Order by Movies.year_released;
+
+
 
 
 -- Prints a header for the cast output
@@ -192,3 +202,9 @@ from
 
 -- The SQL statement for the cast output
 -- TODO!
+
+SELECT Movies.title, Actor.name, Roles.name
+FROM Movies 
+INNER JOIN Roles ON Roles.movie_id = Movies.id
+INNER JOIN Actor ON Actor.id = Roles.actor_id
+Order by Movies.year_released;
