@@ -141,6 +141,35 @@ name TEXT
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO Studio (name) VALUES ('Warner Bros.');
+
+INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('Batman Begins', '2005', 'PG-13', 1);
+INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('The Dark Knight', '2008', 'PG-13', 1);
+INSERT INTO Movies (title, year_released, mpaa_rating, studio_id) VALUES ('The Dark Knight Rises', '2012', 'PG-13', 1);
+
+INSERT INTO Actor (name) VALUES ('Christian Bale');
+INSERT INTO Actor (name) VALUES ('Michael Caine');
+INSERT INTO Actor (name) VALUES ('Liam Neeson');
+INSERT INTO Actor (name) VALUES ('Katie Holmes');
+INSERT INTO Actor (name) VALUES ('Gary Oldman');
+INSERT INTO Actor (name) VALUES ('Heath Ledger');
+INSERT INTO Actor (name) VALUES ('Aaron Eckhart');
+INSERT INTO Actor (name) VALUES ('Maggie Gyllenhaal');
+INSERT INTO Actor (name) VALUES ('Tom Hardy');
+INSERT INTO Actor (name) VALUES ('Joseph Gordon-Levitt');
+INSERT INTO Actor (name) VALUES ('Anne Hathaway');
+
+
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 1, 'Bruce Wayne');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 2, 'Alfred');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 3, 'Ra''s Al Ghul');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 4, 'Rachel Dawes');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Commissioner Gordon');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Joker');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Harvey Dent');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Bane');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'John Blake');
+INSERT INTO Roles (movie_id, actor_id, name) VALUES (1, 5, 'Selina Kyle');
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -149,6 +178,10 @@ name TEXT
 
 -- The SQL statement for the movies output
 -- TODO!
+
+Select title, year, mpaa_rating, studio name
+from 
+
 
 -- Prints a header for the cast output
 .print ""
